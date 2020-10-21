@@ -226,6 +226,15 @@ td:nth-child(3) {
     color: red;
 }
 
+.loading {
+    font-size: 30px;
+    text-align: center;
+    animation-name: loadingAnimation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
 
 @media(max-width: 768px) {
     body {
@@ -274,6 +283,17 @@ td:nth-child(3) {
 
     td:nth-child(3) {
         min-width: 50px;
+    }
+}
+
+
+@keyframes loadingAnimation {
+    0% {
+        color: rgba(91, 20, 105, 0.2);
+    }
+
+    100% {
+        color: rgba(91, 20, 105, 1);
     }
 }
 

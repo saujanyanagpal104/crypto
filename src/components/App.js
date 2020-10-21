@@ -30,15 +30,23 @@ const App = () => {
   return (
     <div className='container'>
       <Header totalWorth={totalWorth} />
-      {isFetched && userHoldingsTab ?  <UserHoldings userHoldings={userHoldings} cryptoList={cryptoList} /> : null}
-      {isFetched && cryptoListTab ? (
-        <CryptoList
-          cryptoList={cryptoList}
-          userHoldings={userHoldings}
-          setUserHoldings={setUserHoldings}
-          setTotalWorth={setTotalWorth}
-        />
-      ) : null}
+      {isFetched ? (
+        <>
+          {userHoldingsTab && (
+            <UserHoldings userHoldings={userHoldings} cryptoList={cryptoList} />
+          )}
+          {cryptoListTab && (
+            <CryptoList
+              cryptoList={cryptoList}
+              userHoldings={userHoldings}
+              setUserHoldings={setUserHoldings}
+              setTotalWorth={setTotalWorth}
+            />
+          )}
+        </>
+      ) : (
+        <span className='loading'>Loading...</span>
+      )}
       <TabsBar
         userHoldingsTab={userHoldingsTab}
         setUserHoldingsTab={setUserHoldingsTab}
