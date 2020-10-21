@@ -1,0 +1,116 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    color: #545454;
+}
+
+/* Main Container */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Tabs Bar */
+
+.tabs-container {
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+}
+
+.tab {
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    background-color: rgba(91, 20, 105, 0.5);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.active-tab {
+    background-color: rgba(93, 20, 105, 1);
+}
+
+.tab:first-child {
+    border-right: 1px solid #fff;
+    border-top-left-radius: 15px;
+}
+
+.tab:nth-child(2) {
+    border-top-right-radius: 15px;
+}
+
+/* Header */
+
+.header {
+    padding: 15px;
+    background-color: #fff;
+    color: #5D1469;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 7px 3px #5D1469;
+}
+
+/* Crypto List */
+
+.crypto-list-container {
+    overflow: hidden;
+    margin: 40px 10px;
+    height: 100%;
+}
+
+.crypto-table {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.crypto-table table {
+    width: 100%;
+}
+
+.column {
+    display: grid;
+    grid-template-columns: 0.2fr .8fr;
+    justify-items: flex-start;
+}
+
+.table-heading, .table-row-item {
+    text-align: right;
+    padding: 20px;
+}
+
+.serial-number, .crypto-name, .table-row-name, .table-row-serial-number {
+    padding: 20px;
+}
+
+.table-row-name, .table-row-item {
+    font-weight: 600;
+}
+
+.crypto-symbol {
+    color: #808A9D;
+    font-weight: 200;
+    font-size: 14px;
+}
+
+.row-price {
+    color: #3861FB;
+}
+
+.row-circulating-supply {
+    color: #222531;
+}
+
+th {
+    font-size: 14px;
+}
