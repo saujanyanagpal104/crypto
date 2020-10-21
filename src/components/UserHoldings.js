@@ -1,7 +1,7 @@
 import React from 'react';
 import UserHoldingRow from './UserHoldingsRow';
 
-const UserHoldings = ({ userHoldings, cryptoList, setTotalWorth }) => {
+const UserHoldings = ({ userHoldings, cryptoList }) => {
   const userHoldingIds = Object.keys(userHoldings);
   const getUpdatedData = cryptoList.data.filter(
     (crypto) => userHoldingIds.indexOf(crypto.id.toString()) !== -1
