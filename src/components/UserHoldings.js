@@ -9,7 +9,6 @@ const UserHoldings = ({ userHoldings, cryptoList, setTotalWorth }) => {
 
   return (
     <div className='user-holdings'>
-      {console.log(userHoldings, 'test')}
       <div className='user-holdings-table'>
         <table>
           <thead>
