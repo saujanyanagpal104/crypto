@@ -123,6 +123,7 @@ html, body {
 }
 
 td:first-child, th:first-child {
+    position: -webkit-sticky;
     position: sticky;
     left: -1px;
     background-color: #ffffff;
@@ -133,6 +134,7 @@ th:first-child {
 }
 
 th {
+    position: -webkit-sticky;
     font-size: 14px;
     position: sticky;
     top: -1px;
