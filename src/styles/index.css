@@ -235,6 +235,15 @@ td:nth-child(3) {
     animation-play-state: running;
 }
 
+.no-holdings {
+    font-size: 25px;
+    color: rgba(91, 20, 105, 1);
+    display: block;
+    text-align: center;
+}
+
+
+
 
 @media(max-width: 768px) {
     body {

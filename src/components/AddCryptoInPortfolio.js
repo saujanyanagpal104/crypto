@@ -37,7 +37,7 @@ const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
     <div className='add-in-portfolio-container'>
       {!toggleElement ? (
         <div className='add-in-portfolio-button' onClick={toggleValueField}>
-          Add in Portfolio
+          Add to Portfolio
         </div>
       ) : coinAdded ? (
         <span className='coin-added'>Coin Added!</span>
