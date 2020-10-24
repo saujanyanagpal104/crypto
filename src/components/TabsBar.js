@@ -1,4 +1,6 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import {tabStyles} from '../styles/styles';
 
 const TabsBar = ({
   userHoldingsTab,
@@ -6,6 +8,14 @@ const TabsBar = ({
   cryptoListTab,
   setCryptoListTab,
 }) => {
+
+  const useStyles = makeStyles({
+    tab: tabStyles
+  });
+
+  const classes = useStyles();
+
+
   const openCryptoTab = () => {
     setUserHoldingsTab(false);
     setCryptoListTab(true);
@@ -17,7 +27,7 @@ const TabsBar = ({
   };
 
   return (
-    <div className='tabs-container'>
+    <div className={classes.tab}>
       <span
         className={`tab ${cryptoListTab ? 'active-tab' : ''}`}
         onClick={openCryptoTab}

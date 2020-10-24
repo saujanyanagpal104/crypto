@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import CryptoRow from './CryptoRow';
+import {makeStyles} from '@material-ui/styles';
+import {cryptoListStyles, tableStyles, mobileTableStyles, mobileListTextStyles} from '../styles/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const CryptoList = ({
   cryptoList,
@@ -7,6 +10,17 @@ const CryptoList = ({
   setUserHoldings,
   setTotalWorth,
 }) => {
+  const useStyles = makeStyles({
+    container: cryptoListStyles,
+    table: tableStyles,
+    mobileTable: mobileTableStyles,
+    mobileListText: mobileListTextStyles
+  });
+
+  const classes = useStyles();
+  const matches = useMediaQuery('(max-width:768px)');
+
+
   useEffect(() => {
     const userHoldingIds = Object.keys(userHoldings);
     const getUpdatedData = cryptoList.data.filter(
@@ -28,9 +42,9 @@ const CryptoList = ({
   }, [cryptoList.data, userHoldings, setTotalWorth]);
 
   return (
-    <div className='crypto-list-container'>
-      <div className='list-text'>
-        <span>Today's Cryptocurrency Prices</span>
+    <div className={`${classes.container} ${classes.table} ${matches ? classes.mobileTable : ''}`}>
+      <div className={ 'list-text'}>
+        <span className={`${matches ? classes.mobileListText : ''}`}>Today's Cryptocurrency Prices</span>
       </div>
       <div className='crypto-table'>
         <table>

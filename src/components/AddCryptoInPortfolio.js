@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
+import {makeStyles} from '@material-ui/styles';
+import {addInPortfolioButtonStyles, mobileAddInPortfolioContainer} from '../styles/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
   const [toggleElement, setToggleElement] = useState(false);
   const [amount, setAmount] = useState();
   const [coinAdded, setCoinAdded] = useState(false);
+  const useStyles = makeStyles({
+    portfolioButton: addInPortfolioButtonStyles,
+    mobilePortfolio: mobileAddInPortfolioContainer
+  });
+
+  const classes = useStyles();
+
+  const matches = useMediaQuery('(max-width:768px)');
 
   const toggleValueField = () => {
     setToggleElement(!toggleElement);
@@ -34,7 +45,7 @@ const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
   };
 
   return (
-    <div className='add-in-portfolio-container'>
+    <div className={`${classes.portfolioButton} ${matches ? classes.mobilePortfolio : ''}`}>
       {!toggleElement ? (
         <div className='add-in-portfolio-button' onClick={toggleValueField}>
           Add to Portfolio
