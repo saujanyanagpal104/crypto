@@ -1,5 +1,7 @@
 import React from 'react';
 import { formatNumber } from '../helpers/formatNumber';
+import Box from '@material-ui/core/Box';
+import { TableRow, TableCell } from '@material-ui/core';
 
 const UserHoldingRow = ({ userHoldings, serialNumber, updatedData }) => {
   const differencePrice =
@@ -7,51 +9,51 @@ const UserHoldingRow = ({ userHoldings, serialNumber, updatedData }) => {
     parseInt(userHoldings[updatedData.id].quote.INR.price);
 
   return (
-    <tr className='user-holding-row'>
-      <td>
-        <div className='column'>
-          <span className='table-row-serial-number'>{serialNumber}</span>
-          <span className='table-row-name'>
+    <TableRow className='user-holding-row'>
+      <TableCell>
+        <Box className='column'>
+          <Box component='span' className='table-row-serial-number'>{serialNumber}</Box>
+          <Box component='span' className='table-row-name'>
             {userHoldings[updatedData.id].name}&nbsp;
-            <span className='crypto-symbol'>
+            <Box component='span' className='crypto-symbol'>
               ({userHoldings[updatedData.id].symbol})
-            </span>
-          </span>
-        </div>
-      </td>
-      <td className='row-price table-row-item'>
-        <span>&#8377;{formatNumber(updatedData.quote.INR.price)}</span>
-      </td>
-      <td className='table-row-item'>
-        <span className='row-holdings'>
-          <span className='my-holdings'>
+            </Box>
+          </Box>
+        </Box>
+      </TableCell>
+      <TableCell className='row-price table-row-item'>
+        <Box component='span'>&#8377;{formatNumber(updatedData.quote.INR.price)}</Box>
+      </TableCell>
+      <TableCell className='table-row-item'>
+        <Box component='span' className='row-holdings'>
+          <Box component='span' className='my-holdings'>
             {formatNumber(userHoldings[updatedData.id].coinQuantity)}&nbsp;
             {userHoldings[updatedData.id].symbol}
-          </span>
-          <span className='holdings-worth'>
+          </Box>
+          <Box component='span' className='holdings-worth'>
             Worth:&nbsp;&#8377;
             {formatNumber(
               userHoldings[updatedData.id].coinQuantity *
                 userHoldings[updatedData.id].coinQuantity
             )}
-          </span>
-        </span>
-      </td>
-      <td className='table-row-item'>
-        <span className='bought-at'>
+          </Box>
+        </Box>
+      </TableCell>
+      <TableCell className='table-row-item'>
+        <Box component='span' className='bought-at'>
           &#8377;{formatNumber(userHoldings[updatedData.id].quote.INR.price)}
-        </span>
+        </Box>
         /
-        <span
+        <Box component='span'
           className={`difference-price ${
             differencePrice > 0 ? 'profit' : 'loss'
           }`}
         >
           &#8377;{formatNumber(differencePrice)}
-        </span>
+        </Box>
         }
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 };
 

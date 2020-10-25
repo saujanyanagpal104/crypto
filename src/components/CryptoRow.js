@@ -1,6 +1,8 @@
 import React from 'react';
 import AddCryptoInPortfolio from './AddCryptoInPortfolio';
 import { formatNumber } from '../helpers/formatNumber';
+import Box from '@material-ui/core/Box';
+import { TableRow, TableCell } from '@material-ui/core';
 
 const CryptoRow = ({ crypto, serialNumber, userHoldings, setUserHoldings }) => {
   const currentHoldingsWorth = userHoldings[crypto.id]
@@ -8,46 +10,46 @@ const CryptoRow = ({ crypto, serialNumber, userHoldings, setUserHoldings }) => {
     : 0;
 
   return (
-    <tr className='crypto-row'>
-      <td>
-        <div className='column'>
-          <span className='table-row-serial-number'>{serialNumber}</span>
-          <span className='table-row-name'>
+    <TableRow className='crypto-row'>
+      <TableCell>
+        <Box className='column'>
+          <Box component='span' className='table-row-serial-number'>{serialNumber}</Box>
+          <Box component='span' className='table-row-name'>
             {crypto.name}&nbsp;
-            <span className='crypto-symbol'>({crypto.symbol})</span>
-          </span>
-        </div>
-      </td>
-      <td className='row-price table-row-item'>
-        <span>&#8377;{formatNumber(crypto.quote.INR.price)}</span>
-      </td>
-      <td className='table-row-item'>{crypto.cmc_rank}</td>
-      <td className='row-circulating-supply table-row-item'>
+            <Box component='span' className='crypto-symbol'>({crypto.symbol})</Box>
+          </Box>
+        </Box>
+      </TableCell>
+      <TableCell className='row-price table-row-item'>
+        <Box component='span'>&#8377;{formatNumber(crypto.quote.INR.price)}</Box>
+      </TableCell>
+      <TableCell className='table-row-item'>{crypto.cmc_rank}</TableCell>
+      <TableCell className='row-circulating-supply table-row-item'>
         {formatNumber(crypto.circulating_supply)}&nbsp;{crypto.symbol}
-      </td>
-      <td className='table-row-item'>
+      </TableCell>
+      <TableCell className='table-row-item'>
         {userHoldings[crypto.id] ? (
-          <span className='row-holdings'>
-            <span className='my-holdings'>
+          <Box component='span' className='row-holdings'>
+            <Box component='span' className='my-holdings'>
               {formatNumber(userHoldings[crypto.id].coinQuantity)}&nbsp;
               {crypto.symbol}
-            </span>
-            <span className='holdings-worth'>
+            </Box>
+            <Box component='span' className='holdings-worth'>
               Worth:&nbsp;&#8377;{formatNumber(currentHoldingsWorth)}
-            </span>
-          </span>
+            </Box>
+          </Box>
         ) : (
-          <span className='no-coins'>Nothing! But you can add!</span>
+          <Box component='span' className='no-coins'>Nothing! But you can add!</Box>
         )}
-      </td>
-      <td className='table-row-item'>
+      </TableCell>
+      <TableCell className='table-row-item'>
         <AddCryptoInPortfolio
           crypto={crypto}
           userHoldings={userHoldings}
           setUserHoldings={setUserHoldings}
         />
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 };
 

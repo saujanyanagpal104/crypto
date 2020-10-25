@@ -3,6 +3,7 @@ import { formatNumber } from '../helpers/formatNumber';
 import {makeStyles} from '@material-ui/styles';
 import {headerStyles, mobileHeaderStyles} from '../styles/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
 
 const Header = ({ totalWorth }) => {
   const useStyles = makeStyles({
@@ -14,10 +15,10 @@ const Header = ({ totalWorth }) => {
   const matches = useMediaQuery('(max-width:768px)');
 
   return (
-    <div className={classes.header}>
-      <span className={`${matches ? classes.mobileHeader : ''}`}>CRYPTO</span>
-      <span className={`${matches ? classes.mobileHeader : ''}`}>Total Profile Worth:&nbsp;&#8377;{formatNumber(totalWorth)}</span>
-    </div>
+    <Box className={classes.header}>
+      <Box component='span' className={`${matches ? classes.mobileHeader : ''}`}>CRYPTO</Box>
+      <Box component='span' className={`${matches ? classes.mobileHeader : ''}`}>Total Profile Worth:&nbsp;&#8377;{formatNumber(totalWorth)}</Box>
+    </Box>
   )
 }
 

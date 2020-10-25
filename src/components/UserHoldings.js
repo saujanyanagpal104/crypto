@@ -3,6 +3,8 @@ import UserHoldingRow from './UserHoldingsRow';
 import {makeStyles} from '@material-ui/styles';
 import {userHoldingsStyles, tableStyles, mobileTableStyles} from '../styles/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
+import { TableRow, TableCell, TableHead, Table, TableBody } from '@material-ui/core';
 
 const UserHoldings = ({ userHoldings, cryptoList }) => {
   const useStyles = makeStyles({
@@ -20,26 +22,26 @@ const UserHoldings = ({ userHoldings, cryptoList }) => {
   );
 
   return (
-    <div className={`${classes.container} ${classes.table} ${matches ? classes.mobileTable : ''}`}>
+    <Box className={`${classes.container} ${classes.table} ${matches ? classes.mobileTable : ''}`}>
         {
-            getUpdatedData.length ? (<div className='user-holdings-table'>
-            <table>
-              <thead>
-                <tr>
-                  <th>
-                    <div className='column'>
-                      <span className='serial-number'>#</span>
-                      <span className='crypto-name'>Name</span>
-                    </div>
-                  </th>
-                  <th className='crypto-price table-heading'>Current Price</th>
-                  <th className='crypto-my-holdings table-heading'>My Holdings</th>
-                  <th className='crypto-add-holdings table-heading'>
+            getUpdatedData.length ? (<Box className='user-holdings-table'>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>
+                    <Box className='column'>
+                      <Box component='span' className='serial-number'>#</Box>
+                      <Box component='span' className='crypto-name'>Name</Box>
+                    </Box>
+                  </TableCell>
+                  <TableCell className='crypto-price table-heading'>Current Price</TableCell>
+                  <TableCell className='crypto-my-holdings table-heading'>My Holdings</TableCell>
+                  <TableCell className='crypto-add-holdings table-heading'>
                     Bought At/Price Difference
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
                 {getUpdatedData.map((updatedData, index) => (
                   <UserHoldingRow
                     key={updatedData.id}
@@ -48,11 +50,11 @@ const UserHoldings = ({ userHoldings, cryptoList }) => {
                     serialNumber={index + 1}
                   />
                 ))}
-              </tbody>
-            </table>
-          </div>) : <span className='no-holdings'>No Holdings! Go to cryptocurrencies and add.</span>
+              </TableBody>
+            </Table>
+          </Box>) : <Box component='span' className='no-holdings'>No Holdings! Go to cryptocurrencies and add.</Box>
         }
-    </div>
+    </Box>
   );
 };
 

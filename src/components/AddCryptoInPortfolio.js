@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {makeStyles} from '@material-ui/styles';
 import {addInPortfolioButtonStyles, mobileAddInPortfolioContainer} from '../styles/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
 
 const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
   const [toggleElement, setToggleElement] = useState(false);
@@ -45,13 +46,13 @@ const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
   };
 
   return (
-    <div className={`${classes.portfolioButton} ${matches ? classes.mobilePortfolio : ''}`}>
+    <Box className={`${classes.portfolioButton} ${matches ? classes.mobilePortfolio : ''}`}>
       {!toggleElement ? (
-        <div className='add-in-portfolio-button' onClick={toggleValueField}>
+        <Box className='add-in-portfolio-button' onClick={toggleValueField}>
           Add to Portfolio
-        </div>
+        </Box>
       ) : coinAdded ? (
-        <span className='coin-added'>Coin Added!</span>
+        <Box component='span' className='coin-added'>Coin Added!</Box>
       ) : (
         <form>
           <input
@@ -61,13 +62,13 @@ const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
             onChange={changeAmount}
             placeholder='Amount(in INR)'
           />
-          <div className='add-in-portfolio-buttons'>
+          <Box className='add-in-portfolio-buttons'>
             <button onClick={toggleValueField}>Cancel</button>
             <button onClick={addToPortfolio}>Add</button>
-          </div>
+          </Box>
         </form>
       )}
-    </div>
+    </Box>
   );
 };
 

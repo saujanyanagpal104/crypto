@@ -3,6 +3,8 @@ import CryptoRow from './CryptoRow';
 import {makeStyles} from '@material-ui/styles';
 import {cryptoListStyles, tableStyles, mobileTableStyles, mobileListTextStyles} from '../styles/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
+import { TableBody, TableHead, TableRow, Table, TableCell } from '@material-ui/core';
 
 const CryptoList = ({
   cryptoList,
@@ -42,32 +44,32 @@ const CryptoList = ({
   }, [cryptoList.data, userHoldings, setTotalWorth]);
 
   return (
-    <div className={`${classes.container} ${classes.table} ${matches ? classes.mobileTable : ''}`}>
-      <div className={ 'list-text'}>
-        <span className={`${matches ? classes.mobileListText : ''}`}>Today's Cryptocurrency Prices</span>
-      </div>
-      <div className='crypto-table'>
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <div className='column'>
-                  <span className='serial-number'>#</span>
-                  <span className='crypto-name'>Name</span>
-                </div>
-              </th>
-              <th className='crypto-price table-heading'>Price</th>
-              <th className='crypto-rank table-heading'>Rank</th>
-              <th className='crypto-supply table-heading'>
+    <Box className={`${classes.container} ${classes.table} ${matches ? classes.mobileTable : ''}`}>
+      <Box className={ 'list-text'}>
+        <Box component='span' className={`${matches ? classes.mobileListText : ''}`}>Today's Cryptocurrency Prices</Box>
+      </Box>
+      <Box className='crypto-table'>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <Box className='column'>
+                  <Box component='span' className='serial-number'>#</Box>
+                  <Box component='span' className='crypto-name'>Name</Box>
+                </Box>
+              </TableCell>
+              <TableCell className='crypto-price table-heading'>Price</TableCell>
+              <TableCell className='crypto-rank table-heading'>Rank</TableCell>
+              <TableCell className='crypto-supply table-heading'>
                 Circulating Supply
-              </th>
-              <th className='crypto-my-holdings table-heading'>My Holdings</th>
-              <th className='crypto-add-holdings table-heading'>
+              </TableCell>
+              <TableCell className='crypto-my-holdings table-heading'>My Holdings</TableCell>
+              <TableCell className='crypto-add-holdings table-heading'>
                 Add to My Holdings
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {cryptoList.data.map((crypto, index) => (
               <CryptoRow
                 key={crypto.id}
@@ -77,10 +79,10 @@ const CryptoList = ({
                 setUserHoldings={setUserHoldings}
               />
             ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+          </TableBody>
+        </Table>
+      </Box>
+    </Box>
   );
 };
 

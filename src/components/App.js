@@ -7,6 +7,7 @@ import TabsBar from './TabsBar';
 import { makeStyles } from '@material-ui/core/styles';
 import {containerStyles, loadingStyles, mobileContainerStyles} from '../styles/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
 
 const App = () => {
   const [cryptoList, setCryptoList] = useState([]);
@@ -38,7 +39,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className={`${classes.container} ${matches ? classes.mobileContainer : ''}`}>
+    <Box className={`${classes.container} ${matches ? classes.mobileContainer : ''}`}>
       <Header totalWorth={totalWorth} />
       {isFetched ? (
         <>
@@ -63,7 +64,7 @@ const App = () => {
         cryptoListTab={cryptoListTab}
         setCryptoListTab={setCryptoListTab}
       />
-    </div>
+    </Box>
   );
 };
 

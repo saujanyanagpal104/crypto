@@ -144,7 +144,7 @@ export const tableStyles = {
             fontSize: '14px',
         },
 
-        '&. row-price': {
+        '& .row-price': {
             color: '#3861FB',
         },
         
@@ -262,20 +262,7 @@ export const addInPortfolioButtonStyles = {
 export const loadingStyles = {
     fontSize: '30px',
     textAlign: 'center',
-    animationName: 'loadingAnimation',
-    animationDuration: '2s',
-    animationIterationCount: 'infinite',
-    animationPlayState: 'running',
-
-    // @keyframes loadingAnimation {
-    //     0% {
-    //         color: rgba(91, 20, 105, 0.2);
-    //     }
-    
-    //     100% {
-    //         color: rgba(91, 20, 105, 1);
-    //     }
-    // }
+    color: 'rgba(91, 20, 105, 1)'
 } 
 
 
@@ -293,35 +280,35 @@ export const mobileListTextStyles = {
 }
 
 export const mobileTableStyles = {
-    '& td': {
+    '& tbody td': {
         minWidth: '120px'
     },
 
-    '& .table-heading': {
+    '& thead .table-heading': {
         padding: '15px',
     },
 
-    '& .table-row-item': {
+    '& tbody .table-row-item': {
         padding: '15px',
     },
 
-    '& .serial-number': {
+    '& tbody .serial-number': {
         padding: '10px',
     },
 
-    '& .crypto-name': {
+    '& tbody .crypto-name': {
         padding: '10px',
     },
 
-    '& .table-row-name': {
+    '& tbody .table-row-name': {
         padding: '10px',
     },
 
-    '& .table-row-serial-number': {
+    '& tbody .table-row-serial-number': {
         padding: '10px',
     },
 
-    '& td:nth-child(3)': {
+    '& tbody td:nth-child(3)': {
         minWidth: '50px',
     }
 }
@@ -341,5 +328,6 @@ export const mobileAddInPortfolioContainer = {
         padding: '5px',
     }
 }
+
 
 
