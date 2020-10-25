@@ -150,6 +150,9 @@ export const tableContainerStyles = {
       },
   
       mobileTable: {
+        '& .MuiTableCell-root': {
+            padding: '10px',
+        },
         '& td': {
           minWidth: '120px',
         },
