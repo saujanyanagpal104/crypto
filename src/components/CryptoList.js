@@ -1,10 +1,16 @@
 import React, { useEffect } from 'react';
 import CryptoRow from './CryptoRow';
-import {makeStyles} from '@material-ui/styles';
-import {cryptoListStyles, tableStyles, mobileTableStyles, mobileListTextStyles} from '../styles/styles';
+import { makeStyles } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Box from '@material-ui/core/Box';
-import { TableBody, TableHead, TableRow, Table, TableCell } from '@material-ui/core';
+import {
+  TableBody,
+  TableHead,
+  TableRow,
+  Table,
+  TableCell,
+} from '@material-ui/core';
+import {cryptoListStyles, tableContainerStyles} from '../styles/styles';
 
 const CryptoList = ({
   cryptoList,
@@ -13,15 +19,11 @@ const CryptoList = ({
   setTotalWorth,
 }) => {
   const useStyles = makeStyles({
-    container: cryptoListStyles,
-    table: tableStyles,
-    mobileTable: mobileTableStyles,
-    mobileListText: mobileListTextStyles
+    ...tableContainerStyles, ...cryptoListStyles
   });
 
   const classes = useStyles();
   const matches = useMediaQuery('(max-width:768px)');
-
 
   useEffect(() => {
     const userHoldingIds = Object.keys(userHoldings);
@@ -44,27 +46,78 @@ const CryptoList = ({
   }, [cryptoList.data, userHoldings, setTotalWorth]);
 
   return (
-    <Box className={`${classes.container} ${classes.table} ${matches ? classes.mobileTable : ''}`}>
-      <Box className={ 'list-text'}>
-        <Box component='span' className={`${matches ? classes.mobileListText : ''}`}>Today's Cryptocurrency Prices</Box>
+    <Box className={classes.root}>
+      <Box
+        className={`${classes.listText} ${
+          matches ? classes.mobileListText : ''
+        }`}
+      >
+        <Box
+          component='span'
+          className={`${matches ? classes.mobileListText : ''}`}
+        >
+          Today's Cryptocurrency Prices
+        </Box>
       </Box>
-      <Box className='crypto-table'>
-        <Table>
+      <Box className={classes.cryptoTable}>
+        <Table
+          className={`${classes.table} ${matches ? classes.mobileTable : ''}`}
+        >
           <TableHead>
             <TableRow>
               <TableCell>
-                <Box className='column'>
-                  <Box component='span' className='serial-number'>#</Box>
-                  <Box component='span' className='crypto-name'>Name</Box>
+                <Box className={classes.columnCrypto}>
+                  <Box
+                    component='span'
+                    className={`${classes.serialNumber} ${
+                      matches ? classes.mobileSerialNumber : ''
+                    }`}
+                  >
+                    #
+                  </Box>
+                  <Box
+                    component='span'
+                    className={`${classes.cryptoName} ${
+                      matches ? classes.mobileCryptoName : ''
+                    }`}
+                  >
+                    Name
+                  </Box>
                 </Box>
               </TableCell>
-              <TableCell className='crypto-price table-heading'>Price</TableCell>
-              <TableCell className='crypto-rank table-heading'>Rank</TableCell>
-              <TableCell className='crypto-supply table-heading'>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
+                Price
+              </TableCell>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
+                Rank
+              </TableCell>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
                 Circulating Supply
               </TableCell>
-              <TableCell className='crypto-my-holdings table-heading'>My Holdings</TableCell>
-              <TableCell className='crypto-add-holdings table-heading'>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
+                My Holdings
+              </TableCell>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
                 Add to My Holdings
               </TableCell>
             </TableRow>

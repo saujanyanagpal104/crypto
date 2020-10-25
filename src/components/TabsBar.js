@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {tabStyles} from '../styles/styles';
 import Box from '@material-ui/core/Box';
+import { tabsStyles } from '../styles/styles';
 
 const TabsBar = ({
   userHoldingsTab,
@@ -9,13 +9,11 @@ const TabsBar = ({
   cryptoListTab,
   setCryptoListTab,
 }) => {
-
   const useStyles = makeStyles({
-    tab: tabStyles
+    ...tabsStyles
   });
 
   const classes = useStyles();
-
 
   const openCryptoTab = () => {
     setUserHoldingsTab(false);
@@ -28,17 +26,17 @@ const TabsBar = ({
   };
 
   return (
-    <Box className={classes.tab}>
+    <Box className={classes.root}>
       <Box
         component='span'
-        className={`tab ${cryptoListTab ? 'active-tab' : ''}`}
+        className={`${classes.tab} ${cryptoListTab ? classes.activeTab : ''}`}
         onClick={openCryptoTab}
       >
         CRYPTOCURRENCIES
       </Box>
       <Box
         component='span'
-        className={`tab ${userHoldingsTab ? 'active-tab' : ''}`}
+        className={`${classes.tab} ${userHoldingsTab ? classes.activeTab : ''}`}
         onClick={openUserHoldings}
       >
         MY HOLDINGS

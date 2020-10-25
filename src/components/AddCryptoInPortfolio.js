@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import {makeStyles} from '@material-ui/styles';
-import {addInPortfolioButtonStyles, mobileAddInPortfolioContainer} from '../styles/styles';
+import { makeStyles } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Box from '@material-ui/core/Box';
+import {addCryptoInPortfolioStyles} from '../styles/styles'
 
 const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
   const [toggleElement, setToggleElement] = useState(false);
   const [amount, setAmount] = useState();
   const [coinAdded, setCoinAdded] = useState(false);
   const useStyles = makeStyles({
-    portfolioButton: addInPortfolioButtonStyles,
-    mobilePortfolio: mobileAddInPortfolioContainer
+    ...addCryptoInPortfolioStyles
   });
 
   const classes = useStyles();
@@ -46,13 +45,20 @@ const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
   };
 
   return (
-    <Box className={`${classes.portfolioButton} ${matches ? classes.mobilePortfolio : ''}`}>
+    <Box className={`${classes.root} ${matches ? classes.mobileRoot : ''}`}>
       {!toggleElement ? (
-        <Box className='add-in-portfolio-button' onClick={toggleValueField}>
+        <Box
+          className={`${classes.addInPortfolioButton} ${
+            matches ? classes.mobileAddInPortfolioButton : ''
+          }`}
+          onClick={toggleValueField}
+        >
           Add to Portfolio
         </Box>
       ) : coinAdded ? (
-        <Box component='span' className='coin-added'>Coin Added!</Box>
+        <Box component='span' className={classes.coinAdded}>
+          Coin Added!
+        </Box>
       ) : (
         <form>
           <input
@@ -62,7 +68,7 @@ const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
             onChange={changeAmount}
             placeholder='Amount(in INR)'
           />
-          <Box className='add-in-portfolio-buttons'>
+          <Box>
             <button onClick={toggleValueField}>Cancel</button>
             <button onClick={addToPortfolio}>Add</button>
           </Box>

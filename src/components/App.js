@@ -3,11 +3,10 @@ import Header from './Header';
 import CryptoList from './CryptoList';
 import UserHoldings from './UserHoldings';
 import TabsBar from './TabsBar';
-// import '../styles/index.css';
 import { makeStyles } from '@material-ui/core/styles';
-import {containerStyles, loadingStyles, mobileContainerStyles} from '../styles/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Box from '@material-ui/core/Box';
+import {containerStyles} from '../styles/styles';
 
 const App = () => {
   const [cryptoList, setCryptoList] = useState([]);
@@ -19,10 +18,9 @@ const App = () => {
   const [isFetched, setIsFetched] = useState(false);
   const [totalWorth, setTotalWorth] = useState(0);
   const useStyles = makeStyles({
-    container: containerStyles,
-    loading: loadingStyles,
-    mobileContainer: mobileContainerStyles
+    ...containerStyles
   });
+
   const classes = useStyles();
   const matches = useMediaQuery('(max-width:768px)');
 
@@ -39,7 +37,7 @@ const App = () => {
   }, []);
 
   return (
-    <Box className={`${classes.container} ${matches ? classes.mobileContainer : ''}`}>
+    <Box className={`${classes.root} ${matches ? classes.mobileRoot : ''}`}>
       <Header totalWorth={totalWorth} />
       {isFetched ? (
         <>

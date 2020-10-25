@@ -1,16 +1,21 @@
 import React from 'react';
 import UserHoldingRow from './UserHoldingsRow';
-import {makeStyles} from '@material-ui/styles';
-import {userHoldingsStyles, tableStyles, mobileTableStyles} from '../styles/styles';
+import { makeStyles } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Box from '@material-ui/core/Box';
-import { TableRow, TableCell, TableHead, Table, TableBody } from '@material-ui/core';
+import {
+  TableRow,
+  TableCell,
+  TableHead,
+  Table,
+  TableBody,
+} from '@material-ui/core';
+import {userHoldingsStyles, tableContainerStyles} from '../styles/styles';
+
 
 const UserHoldings = ({ userHoldings, cryptoList }) => {
   const useStyles = makeStyles({
-    container: userHoldingsStyles,
-    table: tableStyles,
-    mobileTable: mobileTableStyles,
+    ...userHoldingsStyles, ...tableContainerStyles
   });
 
   const classes = useStyles();
@@ -22,38 +27,74 @@ const UserHoldings = ({ userHoldings, cryptoList }) => {
   );
 
   return (
-    <Box className={`${classes.container} ${classes.table} ${matches ? classes.mobileTable : ''}`}>
-        {
-            getUpdatedData.length ? (<Box className='user-holdings-table'>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>
-                    <Box className='column'>
-                      <Box component='span' className='serial-number'>#</Box>
-                      <Box component='span' className='crypto-name'>Name</Box>
+    <Box className={classes.root}>
+      {getUpdatedData.length ? (
+        <Box className={classes.userHoldingsTable}>
+          <Table
+            className={`${classes.table} ${matches ? classes.mobileTable : ''}`}
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  <Box className={classes.columnUserHolding}>
+                    <Box
+                      component='span'
+                      className={`${classes.serialNumber} ${
+                        matches ? classes.mobileSerialNumber : ''
+                      }`}
+                    >
+                      #
                     </Box>
-                  </TableCell>
-                  <TableCell className='crypto-price table-heading'>Current Price</TableCell>
-                  <TableCell className='crypto-my-holdings table-heading'>My Holdings</TableCell>
-                  <TableCell className='crypto-add-holdings table-heading'>
-                    Bought At/Price Difference
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {getUpdatedData.map((updatedData, index) => (
-                  <UserHoldingRow
-                    key={updatedData.id}
-                    updatedData={updatedData}
-                    userHoldings={userHoldings}
-                    serialNumber={index + 1}
-                  />
-                ))}
-              </TableBody>
-            </Table>
-          </Box>) : <Box component='span' className='no-holdings'>No Holdings! Go to cryptocurrencies and add.</Box>
-        }
+                    <Box
+                      component='span'
+                      className={`${classes.cryptoName} ${
+                        matches ? classes.mobileCryptoName : ''
+                      }`}
+                    >
+                      Name
+                    </Box>
+                  </Box>
+                </TableCell>
+                <TableCell
+                  className={`${classes.tableHeading} ${
+                    matches ? classes.mobileTableHeading : ''
+                  }`}
+                >
+                  Current Price
+                </TableCell>
+                <TableCell
+                  className={`${classes.tableHeading} ${
+                    matches ? classes.mobileTableHeading : ''
+                  }`}
+                >
+                  My Holdings
+                </TableCell>
+                <TableCell
+                  className={`${classes.tableHeading} ${
+                    matches ? classes.mobileTableHeading : ''
+                  }`}
+                >
+                  Bought At/Price Difference
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {getUpdatedData.map((updatedData, index) => (
+                <UserHoldingRow
+                  key={updatedData.id}
+                  updatedData={updatedData}
+                  userHoldings={userHoldings}
+                  serialNumber={index + 1}
+                />
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
+      ) : (
+        <Box component='span' className={classes.noHoldings}>
+          No Holdings! Go to cryptocurrencies and add.
+        </Box>
+      )}
     </Box>
   );
 };

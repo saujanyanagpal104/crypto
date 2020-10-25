@@ -1,23 +1,36 @@
-/* Main Container */
+// Header
 
-export const containerStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    height: '100vh',
-    width: '100vw',
-    color: '#545454',
-    fontFamily: 'sans-serif'
+
+export const headerStyles = {
+    root: {
+        padding: '15px',
+        backgroundColor: '#fff',
+        display: 'flex',
+        justifyContent: 'space-between',
+        boxShadow: '0px 0px 7px 3px #5D1469',
+      },
+  
+      text: {
+        fontSize: '20px',
+        color: '#5D1469',
+      },
+  
+      mobileText: {
+        fontSize: '14px',
+      },
 }
 
-/* Tabs Bar */
 
-export const tabStyles = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    color: '#ffffff',
+// Tabs
 
-    '& .tab': {
+export const tabsStyles = {
+    root: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        color: '#ffffff',
+      },
+  
+      tab: {
         fontSize: '15px',
         fontWeight: '600',
         width: '100%',
@@ -28,343 +41,335 @@ export const tabStyles = {
         justifyContent: 'center',
         alignItems: 'center',
         padding: '20px 0px',
-    },
-
-    '& .active-tab': {
-        backgroundColor: 'rgba(93, 20, 105, 1)'
-    },
-
-    '& .tab:nth-child(1)': {
-        borderRight: '1px solid #fff',
-        borderTopLeftRadius: '15px'
-    },
-
-    '& .tab:nth-child(2)': {
-        borderTopRightRadius: '15px'
-    }
+  
+        '&:nth-child(1)': {
+          borderRight: '1px solid #fff',
+          borderTopLeftRadius: '15px',
+        },
+  
+        '&:nth-child(2)': {
+          borderTopRightRadius: '15px',
+        },
+      },
+  
+      activeTab: {
+        backgroundColor: 'rgba(93, 20, 105, 1)',
+      },
 }
 
-/* Header */
-
-export const headerStyles = {
-    padding: '15px',
-    backgroundColor: '#fff',
-    color: '#5D1469',
-    fontSize: '20px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    boxShadow: '0px 0px 7px 3px #5D1469',
-}
-
-/* Crypto List and UserHoldings */
+// CryptoList
 
 export const cryptoListStyles = {
-    overflow: 'hidden',
-    margin: '40px 10px',
-    height: '100%',
-
-    '& .crypto-table': {
+    root: {
+        overflow: 'hidden',
+        margin: '40px 10px',
+        height: '100%',
+      },
+  
+      cryptoTable: {
         overflowY: 'scroll',
         height: 'calc(100% - 49px)',
-    },
-
-    '& .list-text': {
+      },
+  
+      listText: {
         fontSize: '25px',
         fontWeight: '600',
         margin: '0px 0px 20px 20px',
         color: '#5D1469',
-    }
+      },
+  
+      mobileListText: {
+        fontSize: '20px',
+      },
 }
 
-export const userHoldingsStyles = {
-    overflow: 'hidden',
-    margin: '40px 10px',
-    height: '100%',
+// User Holdings
 
-    '& .user-holdings-table': {
+export const userHoldingsStyles = {
+    root: {
+        overflow: 'hidden',
+        margin: '40px 10px',
+        height: '100%',
+      },
+  
+      userHoldingsTable: {
         overflowY: 'scroll',
         height: '100%',
-    },
-
-    '& .no-holdings': {
+      },
+  
+      noHoldings: {
         fontSize: '25px',
         color: 'rgba(91, 20, 105, 1)',
         display: 'block',
-        textAlign: 'center'
-    }
+        textAlign: 'center',
+      },
 }
 
 
-export const tableStyles = {
-    '& table': {
+// Tables
+
+export const tableContainerStyles = {
+      table: {
         width: '100%',
-
-        '& .column': {
-            display: 'grid',
-            gridTemplateColumns: '0.2fr .8fr',
-            justifyItems: 'flex-start'
-        },
-        
-        '& .table-heading': {
-            textAlign: 'right',
-            padding: '20px'
-        },
-
-        '& .table-row-item': {
-            position: 'relative',
-            textAlign: 'right',
-            padding: '20px',
-            fontWeight: 600,
-        },
-
-        '& .serial-number': {
-            padding: '20px',
-            textAlign: 'left',
-        },
-
-        '& .crypto-name': {
-            padding: '20px',
-            textAlign: 'left',
-        },
-
-        '& .table-row-name': {
-            padding: '20px',
-            textAlign: 'left',
-            fontWeight: 600,
-        },
-
-        '& .table-row-serial-number': {
-            padding: '20px',
-            textAlign: 'left',
-        },
-
-        '& .crypto-symbol': {
-            color: '#808A9D',
-            fontWeight: '200',
-            fontSize: '14px',
-        },
-
-        '& .row-price': {
-            color: '#3861FB',
-        },
-        
-        '& .row-circulating-supply': {
-            color: '#222531'
-        },
-
+  
         '& td:first-child': {
-            position: '-webkit-sticky',
-            // eslint-disable-next-line
-            position: 'sticky',
-            left: '-1px',
-            backgroundColor: '#ffffff',
-            zIndex: 1
+          position: '-webkit-sticky',
+          // eslint-disable-next-line
+          position: 'sticky',
+          left: '-1px',
+          backgroundColor: '#ffffff',
+          zIndex: 1,
         },
-
+  
         '& th:first-child': {
-            position: '-webkit-sticky',
-            // eslint-disable-next-line
-            position: 'sticky',
-            left: '-1px',
-            backgroundColor: '#ffffff',
-            zIndex: '2',
+          position: '-webkit-sticky',
+          // eslint-disable-next-line
+          position: 'sticky',
+          left: '-1px',
+          backgroundColor: '#ffffff',
+          zIndex: '2',
         },
-
+  
         '& th': {
-            position: '-webkit-sticky',
-            // eslint-disable-next-line
-            position: 'sticky',
-            fontSize: '14px',
-            top: '-1px',
-            backgroundColor: '#fff',
-            zIndex: 1
+          position: '-webkit-sticky',
+          // eslint-disable-next-line
+          position: 'sticky',
+          fontSize: '14px',
+          top: '-1px',
+          backgroundColor: '#fff',
+          zIndex: 1,
         },
-
-        '& .row-holdings': {
-            display: 'flex',
-            flexDirection: 'column'
-        },
-
+  
         '& td': {
-            minWidth: '150px',
+          minWidth: '150px',
         },
-
+  
         '& td:nth-child(3)': {
-            minWidth: '100px',
+          minWidth: '100px',
         },
-        
-        '& .profit': {
-            color: 'green',
+      },
+  
+      mobileTable: {
+        '& td': {
+          minWidth: '120px',
         },
-
-        '& .loss': {
-            color: 'red',
+  
+        '& td:nth-child(3)': {
+          minWidth: '50px',
         },
-
-        '& .my-holdings': {
-            color: 'green',
-        },
-
-        '& .holdings-worth': {
-            color: '#808A9D',
-            fontSize: '12px',
-            fontWeight: '500'
-        }
-    }
+      },
+  
+      column: {
+        display: 'grid',
+        gridTemplateColumns: '0.2fr .8fr',
+        justifyItems: 'flex-start',
+      },
+  
+      tableHeading: {
+        textAlign: 'right',
+        padding: '20px',
+      },
+  
+      serialNumber: {
+        padding: '20px',
+        textAlign: 'left',
+      },
+  
+      cryptoName: {
+        padding: '20px',
+        textAlign: 'left',
+      },
+  
+      mobileSerialNumber: {
+        padding: '10px',
+      },
+  
+      mobileCryptoName: {
+        padding: '10px',
+      },
+  
+      mobileTableHeading: {
+        padding: '15px',
+      },
 }
 
-export const addInPortfolioButtonStyles = {
-    position: 'absolute',
-    top: '0',
-    right: '20px',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+export const tableRowStyles = {
+    column: {
+        display: 'grid',
+        gridTemplateColumns: '0.2fr .8fr',
+        justifyItems: 'flex-start',
+      },
+  
+      tableRowItem: {
+        position: 'relative',
+        textAlign: 'right',
+        padding: '20px',
+        fontWeight: 600,
+      },
+  
+      serialNumber: {
+        padding: '20px',
+        textAlign: 'left',
+      },
+  
+      tableRowName: {
+        padding: '20px',
+        textAlign: 'left',
+        fontWeight: 600,
+      },
+  
+      tableRowSerialNumber: {
+        padding: '20px',
+        textAlign: 'left',
+      },
+  
+      cryptoSymbol: {
+        color: '#808A9D',
+        fontWeight: '200',
+        fontSize: '14px',
+      },
+  
+      rowPrice: {
+        color: '#3861FB',
+      },
+  
+      rowCirculatingSupply: {
+        color: '#222531',
+      },
+  
+      rowHoldings: {
+        display: 'flex',
+        flexDirection: 'column',
+      },
+  
+      myHoldings: {
+        color: 'green',
+      },
+  
+      holdingsWorth: {
+        color: '#808A9D',
+        fontSize: '12px',
+        fontWeight: '500',
+      },
+  
+      mobileTableRowItem: {
+        padding: '15px',
+      },
+  
+      mobileSerialNumber: {
+        padding: '10px',
+      },
+  
+      mobileCryptoName: {
+        padding: '10px',
+      },
+  
+      mobileTableRowName: {
+        padding: '10px',
+      },
+  
+      mobileTableRowSerialNumber: {
+        padding: '10px',
+      },
+  
+      mobileTableHeading: {
+        padding: '15px',
+      },
 
-    '& .add-in-portfolio-button': {
+      profit: {
+        color: 'green',
+      },
+  
+      loss: {
+        color: 'red',
+      },
+}
+
+
+// Add CryptoInPortfolioButton
+
+export const addCryptoInPortfolioStyles = {
+    root: {
+        position: 'absolute',
+        top: '0',
+        right: '20px',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+  
+        '& form': {
+          display: 'flex',
+          flexDirection: 'column',
+        },
+  
+        '& input': {
+          padding: '5px 10px',
+          border: '1px solid #5D1469',
+          borderRadius: '5px',
+          maxWidth: '125px',
+        },
+  
+        '& button': {
+          padding: '5px 20px',
+          border: '1px solid #fff',
+          backgroundColor: '#5D1469',
+          color: '#fff',
+          cursor: 'pointer',
+        },
+      },
+  
+      addInPortfolioButton: {
         backgroundColor: '#5D1469',
         color: '#fff',
         padding: '10px',
         borderRadius: '5px',
         cursor: 'pointer',
         textAlign: 'center',
-    },
-
-    '& form': {
-        display: 'flex',
-        flexDirection: 'column'
-    },
-
-    '& input': {
-        padding: '5px 10px',
-        border: '1px solid #5D1469',
-        borderRadius: '5px',
-        maxWidth: '125px'
-    },
-
-    '& button': {
-        padding: '5px 20px',
-        border: '1px solid #fff',
-        backgroundColor: '#5D1469',
-        color: '#fff',
-        cursor: 'pointer',
-    },
-
-    '& .coin-added': {
-        color: 'green'
-    }
-
-}
-
-
-export const loadingStyles = {
-    fontSize: '30px',
-    textAlign: 'center',
-    color: 'rgba(91, 20, 105, 1)'
-} 
-
-
-export const mobileContainerStyles = {
-    fontSize: '14px',
-}
-
-
-export const mobileHeaderStyles = {
-    fontSize: '14px',
-}
-
-export const mobileListTextStyles = {
-    fontSize: '20px',
-}
-
-export const mobileTableStyles = {
-    '& tbody': {
-
-        '& td': {
-            minWidth: '120px'
+      },
+  
+      coinAdded: {
+        color: 'green',
+      },
+  
+      mobileRoot: {
+        right: '15px',
+  
+        '& button': {
+          padding: '5px 13px',
         },
-
-        '& .table-row-item': {
-            padding: '15px',
+  
+        '& input': {
+          maxWidth: '100px',
         },
-    
-        '& .serial-number': {
-            padding: '10px',
-        },
-    
-        '& .crypto-name': {
-            padding: '10px',
-        },
-    
-        '& .table-row-name': {
-            padding: '10px',
-        },
-    
-        '& .table-row-serial-number': {
-            padding: '10px',
-        },
-    
-        '& td:nth-child(3)': {
-            minWidth: '50px',
-        },
-
-        '& thead': {
-            '.table-heading': {
-                padding: '15px',
-            },
-        }
-    }
-
-    // '& tbody td': {
-    //     minWidth: '120px'
-    // },
-
-    // '& thead .table-heading': {
-    //     padding: '15px',
-    // },
-
-    // '& tbody .table-row-item': {
-    //     padding: '15px',
-    // },
-
-    // '& tbody .serial-number': {
-    //     padding: '10px',
-    // },
-
-    // '& tbody .crypto-name': {
-    //     padding: '10px',
-    // },
-
-    // '& tbody .table-row-name': {
-    //     padding: '10px',
-    // },
-
-    // '& tbody .table-row-serial-number': {
-    //     padding: '10px',
-    // },
-
-    // '& tbody td:nth-child(3)': {
-    //     minWidth: '50px',
-    // }
-}
-
-export const mobileAddInPortfolioContainer = {
-    right: '15px',
-
-    '& button': {
-        padding: '5px 13px',
-    },
-
-    '& input': {
-        maxWidth: '100px',
-    },
-
-    '& .add-in-portfolio-button': {
+      },
+  
+      mobileAddInPortfolioButton: {
         padding: '5px',
-    }
+      },
 }
 
+// Container
 
-
+export const containerStyles = {
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        height: '100vh',
+        width: '100vw',
+        color: '#545454',
+        fontFamily: 'sans-serif',
+      },
+  
+      mobileRoot: {
+        fontSize: '14px',
+      },
+  
+      loading: {
+        fontSize: '30px',
+        textAlign: 'center',
+        color: 'rgba(91, 20, 105, 1)',
+      },
+}
