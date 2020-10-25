@@ -153,6 +153,10 @@ export const tableContainerStyles = {
         '& td': {
           minWidth: '120px',
         },
+
+        '& td:nth-child(1)': {
+            minWidth: '80px',
+        },
   
         '& td:nth-child(3)': {
           minWidth: '50px',
