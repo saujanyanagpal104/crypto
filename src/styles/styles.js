@@ -280,37 +280,74 @@ export const mobileListTextStyles = {
 }
 
 export const mobileTableStyles = {
-    '& tbody td': {
-        minWidth: '120px'
-    },
+    '& tbody': {
 
-    '& thead .table-heading': {
-        padding: '15px',
-    },
+        '& td': {
+            minWidth: '120px'
+        },
 
-    '& tbody .table-row-item': {
-        padding: '15px',
-    },
+        '& .table-row-item': {
+            padding: '15px',
+        },
+    
+        '& .serial-number': {
+            padding: '10px',
+        },
+    
+        '& .crypto-name': {
+            padding: '10px',
+        },
+    
+        '& .table-row-name': {
+            padding: '10px',
+        },
+    
+        '& .table-row-serial-number': {
+            padding: '10px',
+        },
+    
+        '& td:nth-child(3)': {
+            minWidth: '50px',
+        },
 
-    '& tbody .serial-number': {
-        padding: '10px',
-    },
-
-    '& tbody .crypto-name': {
-        padding: '10px',
-    },
-
-    '& tbody .table-row-name': {
-        padding: '10px',
-    },
-
-    '& tbody .table-row-serial-number': {
-        padding: '10px',
-    },
-
-    '& tbody td:nth-child(3)': {
-        minWidth: '50px',
+        '& thead': {
+            '.table-heading': {
+                padding: '15px',
+            },
+        }
     }
+
+    // '& tbody td': {
+    //     minWidth: '120px'
+    // },
+
+    // '& thead .table-heading': {
+    //     padding: '15px',
+    // },
+
+    // '& tbody .table-row-item': {
+    //     padding: '15px',
+    // },
+
+    // '& tbody .serial-number': {
+    //     padding: '10px',
+    // },
+
+    // '& tbody .crypto-name': {
+    //     padding: '10px',
+    // },
+
+    // '& tbody .table-row-name': {
+    //     padding: '10px',
+    // },
+
+    // '& tbody .table-row-serial-number': {
+    //     padding: '10px',
+    // },
+
+    // '& tbody td:nth-child(3)': {
+    //     minWidth: '50px',
+    // }
 }
 
 export const mobileAddInPortfolioContainer = {
