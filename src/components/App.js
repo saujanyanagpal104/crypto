@@ -3,7 +3,10 @@ import Header from './Header';
 import CryptoList from './CryptoList';
 import UserHoldings from './UserHoldings';
 import TabsBar from './TabsBar';
-import '../styles/index.css';
+import { makeStyles } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
+import {containerStyles} from '../styles/styles';
 
 const App = () => {
   const [cryptoList, setCryptoList] = useState([]);
@@ -14,6 +17,12 @@ const App = () => {
   const [cryptoListTab, setCryptoListTab] = useState(true);
   const [isFetched, setIsFetched] = useState(false);
   const [totalWorth, setTotalWorth] = useState(0);
+  const useStyles = makeStyles({
+    ...containerStyles
+  });
+
+  const classes = useStyles();
+  const matches = useMediaQuery('(max-width:768px)');
 
   useEffect(() => {
     let fetchList = async () => {
@@ -28,7 +37,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className='container'>
+    <Box className={`${classes.root} ${matches ? classes.mobileRoot : ''}`}>
       <Header totalWorth={totalWorth} />
       {isFetched ? (
         <>
@@ -45,7 +54,7 @@ const App = () => {
           )}
         </>
       ) : (
-        <span className='loading'>Loading...</span>
+        <span className={classes.loading}>Loading...</span>
       )}
       <TabsBar
         userHoldingsTab={userHoldingsTab}
@@ -53,7 +62,7 @@ const App = () => {
         cryptoListTab={cryptoListTab}
         setCryptoListTab={setCryptoListTab}
       />
-    </div>
+    </Box>
   );
 };
 

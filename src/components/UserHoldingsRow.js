@@ -1,57 +1,96 @@
 import React from 'react';
 import { formatNumber } from '../helpers/formatNumber';
+import Box from '@material-ui/core/Box';
+import { TableRow, TableCell } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {tableRowStyles} from '../styles/styles';
 
 const UserHoldingRow = ({ userHoldings, serialNumber, updatedData }) => {
+  const useStyles = makeStyles({
+    ...tableRowStyles
+  });
+
+  const classes = useStyles();
+  const matches = useMediaQuery('(max-width:768px)');
+
   const differencePrice =
     parseInt(updatedData.quote.INR.price) -
     parseInt(userHoldings[updatedData.id].quote.INR.price);
 
   return (
-    <tr className='user-holding-row'>
-      <td>
-        <div className='column'>
-          <span className='table-row-serial-number'>{serialNumber}</span>
-          <span className='table-row-name'>
+    <TableRow>
+      <TableCell>
+        <Box className={classes.column}>
+          <Box
+            component='span'
+            className={`${classes.tableRowSerialNumber} ${
+              matches ? classes.mobileTableRowSerialNumber : ''
+            }`}
+          >
+            {serialNumber}
+          </Box>
+          <Box
+            component='span'
+            className={`${classes.tableRowName} ${
+              matches ? classes.mobileTableRowName : ''
+            }`}
+          >
             {userHoldings[updatedData.id].name}&nbsp;
-            <span className='crypto-symbol'>
+            <Box component='span' className={classes.cryptoSymbol}>
               ({userHoldings[updatedData.id].symbol})
-            </span>
-          </span>
-        </div>
-      </td>
-      <td className='row-price table-row-item'>
-        <span>&#8377;{formatNumber(updatedData.quote.INR.price)}</span>
-      </td>
-      <td className='table-row-item'>
-        <span className='row-holdings'>
-          <span className='my-holdings'>
+            </Box>
+          </Box>
+        </Box>
+      </TableCell>
+      <TableCell
+        className={`${classes.rowPrice} ${classes.tableRowItem} ${
+          matches ? classes.mobileTableRowItem : ''
+        }`}
+      >
+        <Box component='span'>
+          &#8377;{formatNumber(updatedData.quote.INR.price)}
+        </Box>
+      </TableCell>
+      <TableCell
+        className={`${classes.tableRowItem} ${
+          matches ? classes.mobileTableRowItem : ''
+        }`}
+      >
+        <Box component='span' className={classes.rowHoldings}>
+          <Box component='span' className={classes.myHoldings}>
             {formatNumber(userHoldings[updatedData.id].coinQuantity)}&nbsp;
             {userHoldings[updatedData.id].symbol}
-          </span>
-          <span className='holdings-worth'>
+          </Box>
+          <Box component='span' className={classes.holdingsWorth}>
             Worth:&nbsp;&#8377;
             {formatNumber(
               userHoldings[updatedData.id].coinQuantity *
                 userHoldings[updatedData.id].coinQuantity
             )}
-          </span>
-        </span>
-      </td>
-      <td className='table-row-item'>
-        <span className='bought-at'>
+          </Box>
+        </Box>
+      </TableCell>
+      <TableCell
+        className={`${classes.tableRowItem} ${
+          matches ? classes.mobileTableRowItem : ''
+        }`}
+      >
+        <Box component='span'>
           &#8377;{formatNumber(userHoldings[updatedData.id].quote.INR.price)}
-        </span>
+        </Box>
         /
-        <span
-          className={`difference-price ${
-            differencePrice > 0 ? 'profit' : 'loss'
+        <Box
+          component='span'
+          className={`${classes.differencePrice} ${
+            differencePrice > 0 ? classes.profit : classes.loss
           }`}
         >
           &#8377;{formatNumber(differencePrice)}
-        </span>
+        </Box>
         }
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 };
 

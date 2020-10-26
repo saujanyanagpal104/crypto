@@ -1,5 +1,16 @@
 import React, { useEffect } from 'react';
 import CryptoRow from './CryptoRow';
+import { makeStyles } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
+import {
+  TableBody,
+  TableHead,
+  TableRow,
+  Table,
+  TableCell,
+} from '@material-ui/core';
+import {cryptoListStyles, tableContainerStyles} from '../styles/styles';
 
 const CryptoList = ({
   cryptoList,
@@ -7,6 +18,13 @@ const CryptoList = ({
   setUserHoldings,
   setTotalWorth,
 }) => {
+  const useStyles = makeStyles({
+    ...tableContainerStyles, ...cryptoListStyles
+  });
+
+  const classes = useStyles();
+  const matches = useMediaQuery('(max-width:768px)');
+
   useEffect(() => {
     const userHoldingIds = Object.keys(userHoldings);
     const getUpdatedData = cryptoList.data.filter(
@@ -28,32 +46,83 @@ const CryptoList = ({
   }, [cryptoList.data, userHoldings, setTotalWorth]);
 
   return (
-    <div className='crypto-list-container'>
-      <div className='list-text'>
-        <span>Today's Cryptocurrency Prices</span>
-      </div>
-      <div className='crypto-table'>
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <div className='column'>
-                  <span className='serial-number'>#</span>
-                  <span className='crypto-name'>Name</span>
-                </div>
-              </th>
-              <th className='crypto-price table-heading'>Price</th>
-              <th className='crypto-rank table-heading'>Rank</th>
-              <th className='crypto-supply table-heading'>
+    <Box className={classes.root}>
+      <Box
+        className={`${classes.listText} ${
+          matches ? classes.mobileListText : ''
+        }`}
+      >
+        <Box
+          component='span'
+          className={`${matches ? classes.mobileListText : ''}`}
+        >
+          Today's Cryptocurrency Prices
+        </Box>
+      </Box>
+      <Box className={classes.cryptoTable}>
+        <Table
+          className={`${classes.table} ${matches ? classes.mobileTable : ''}`}
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <Box className={classes.columnCrypto}>
+                  <Box
+                    component='span'
+                    className={`${classes.serialNumber} ${
+                      matches ? classes.mobileSerialNumber : ''
+                    }`}
+                  >
+                    #
+                  </Box>
+                  <Box
+                    component='span'
+                    className={`${classes.cryptoName} ${
+                      matches ? classes.mobileCryptoName : ''
+                    }`}
+                  >
+                    Name
+                  </Box>
+                </Box>
+              </TableCell>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
+                Price
+              </TableCell>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
+                Rank
+              </TableCell>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
                 Circulating Supply
-              </th>
-              <th className='crypto-my-holdings table-heading'>My Holdings</th>
-              <th className='crypto-add-holdings table-heading'>
+              </TableCell>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
+                My Holdings
+              </TableCell>
+              <TableCell
+                className={`${classes.tableHeading} ${
+                  matches ? classes.mobileTableHeading : ''
+                }`}
+              >
                 Add to My Holdings
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
             {cryptoList.data.map((crypto, index) => (
               <CryptoRow
                 key={crypto.id}
@@ -63,10 +132,10 @@ const CryptoList = ({
                 setUserHoldings={setUserHoldings}
               />
             ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+          </TableBody>
+        </Table>
+      </Box>
+    </Box>
   );
 };
 

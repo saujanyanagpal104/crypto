@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Box from '@material-ui/core/Box';
+import {addCryptoInPortfolioStyles} from '../styles/styles'
 
 const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
   const [toggleElement, setToggleElement] = useState(false);
   const [amount, setAmount] = useState();
   const [coinAdded, setCoinAdded] = useState(false);
+  const useStyles = makeStyles({
+    ...addCryptoInPortfolioStyles
+  });
+
+  const classes = useStyles();
+
+  const matches = useMediaQuery('(max-width:768px)');
 
   const toggleValueField = () => {
     setToggleElement(!toggleElement);
@@ -34,13 +45,20 @@ const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
   };
 
   return (
-    <div className='add-in-portfolio-container'>
+    <Box className={`${classes.root} ${matches ? classes.mobileRoot : ''}`}>
       {!toggleElement ? (
-        <div className='add-in-portfolio-button' onClick={toggleValueField}>
+        <Box
+          className={`${classes.addInPortfolioButton} ${
+            matches ? classes.mobileAddInPortfolioButton : ''
+          }`}
+          onClick={toggleValueField}
+        >
           Add to Portfolio
-        </div>
+        </Box>
       ) : coinAdded ? (
-        <span className='coin-added'>Coin Added!</span>
+        <Box component='span' className={classes.coinAdded}>
+          Coin Added!
+        </Box>
       ) : (
         <form>
           <input
@@ -50,13 +68,13 @@ const AddCryptoInPortfolio = ({ crypto, userHoldings, setUserHoldings }) => {
             onChange={changeAmount}
             placeholder='Amount(in INR)'
           />
-          <div className='add-in-portfolio-buttons'>
+          <Box>
             <button onClick={toggleValueField}>Cancel</button>
             <button onClick={addToPortfolio}>Add</button>
-          </div>
+          </Box>
         </form>
       )}
-    </div>
+    </Box>
   );
 };
 
